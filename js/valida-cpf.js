@@ -1,13 +1,24 @@
+// export default para ser importada no script.js
+// função que tem como objetivo verificar se o cpf existe ou não
 export default function ehUmCpf(campo) {
+    // substitui o campo do cpf com o pattern regex
     const cpf = campo.value.replace(/\.|-/g, "");
+
+    // se essa função retornar verdade e
     validaNumerosRepetidos(cpf) ||
+    // se essa função também retornar verdade e
     validaPrimeiroDigito(cpf) ||
+    // se essa função também retornar verdade
     validaPrimeiroDigito(cpf)
-        ? console.log("Esse cpf não existe!")
-        : console.log("Existe!");
+        ? // faça
+          console.log("Esse cpf não existe!")
+        : // se nao
+          console.log("Existe!");
 }
 
+// função que tem como objetivo retornar se o cpf é repetido
 function validaNumerosRepetidos(cpf) {
+    // valores de numeros repetidos de um cpf
     const numeroRepetidos = [
         "00000000000",
         "11111111111",
@@ -21,9 +32,11 @@ function validaNumerosRepetidos(cpf) {
         "99999999999",
     ];
 
+    // retorna se o cpf digitado no campo é encontrado no array que contem números repetidos
     return numeroRepetidos.includes(cpf);
 }
 
+// função de cálculo de validação de primeiro dígito de um cpf
 function validaPrimeiroDigito(cpf) {
     let soma = 0;
     let multiplicador = 10;
@@ -42,6 +55,7 @@ function validaPrimeiroDigito(cpf) {
     return soma != cpf[9];
 }
 
+// função de cálculo de validação de segundo dígito de um cpf
 function validaSegundoDigito(cpf) {
     let soma = 0;
     let multiplicador = 10;
