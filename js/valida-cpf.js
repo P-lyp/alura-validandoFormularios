@@ -56,7 +56,7 @@ function validaPrimeiroDigito(cpf) {
 // função de cálculo de validação de segundo dígito de um cpf
 function validaSegundoDigito(cpf) {
     let soma = 0;
-    let multiplicador = 10;
+    let multiplicador = 11;
 
     for (let tamanho = 0; tamanho < 10; tamanho++) {
         soma += cpf[tamanho] * multiplicador;
