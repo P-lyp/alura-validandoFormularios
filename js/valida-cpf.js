@@ -5,15 +5,13 @@ export default function ehUmCpf(campo) {
     const cpf = campo.value.replace(/\.|-/g, "");
 
     // se essa função retornar verdade e
-    validaNumerosRepetidos(cpf) ||
-    // se essa função também retornar verdade e
-    validaPrimeiroDigito(cpf) ||
-    // se essa função também retornar verdade
-    validaPrimeiroDigito(cpf)
-        ? // faça
-          console.log("Esse cpf não existe!")
-        : // se nao
-          console.log("Existe!");
+    if (
+        validaNumerosRepetidos(cpf) ||
+        validaPrimeiroDigito(cpf) ||
+        validaSegundoDigito(cpf)
+    ) {
+        campo.setCustomValidity("Esse CPF não é válido!");
+    }
 }
 
 // função que tem como objetivo retornar se o cpf é repetido

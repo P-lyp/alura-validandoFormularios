@@ -11,6 +11,7 @@ camposDoFormulario.forEach((campo) => {
 
 function verificaCampos(campo) {
     let mensagem = "";
+    campo.setCustomValidity("");
     // se o campo tiver o nome "cpf" e o tamanho dele for maior ou igual a 11 executa a funçao ehUmCpf passando esse campo como parametro
     if (campo.name == "cpf" && campo.value.length >= 11) {
         ehUmCpf(campo);
@@ -30,6 +31,14 @@ function verificaCampos(campo) {
             console.log(mensagem);
         }
     });
+    const mensagemErro = campo.parentNode.querySelector(".mensagem-erro");
+    const validadorDeInput = campo.checkValidity();
+
+    if (!validadorDeInput) {
+        mensagemErro.textContent = mensagem;
+    } else {
+        mensagemErro.textContent = "";
+    }
 }
 
 // obj com os nomes de erros
